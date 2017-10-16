@@ -11,14 +11,14 @@ html, body {
 .wins {
   font-style: bold;
   font-size: 1.25em;
-  position: absolute;
+  position: fixed;
   margin-left: 71%;
 }
 
 .wins_label {
   font-style: bold;
   font-size: 1.25em;
-  position: absolute;
+  position: fixed;
   margin-left: 66%;
 }
 
