@@ -162,13 +162,37 @@ img {
 }
 @media screen and (min-width: 375px) and (max-width: 414px) {
   .score {
-    margin-left: -5%;
+    margin-left: 0%;
   }
   .wins {
     margin-left: -2%;
   }
   img {
+    width: 4rem;
+  }
+  #deal-button {
+    height: 5rem;
     width: 5rem;
+    margin-left: 0;
+    margin-right: 1.5rem;
+    background-size: 5rem 5rem;
+  }
+  #hit-button {
+    height: 5rem;
+    width: 5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    background-size: 5rem 5rem;
+  }
+  #stand-button {
+    height: 5rem;
+    width: 5rem;
+    margin-left: 1.5rem;
+    margin-right: 0;
+    background-size: 5rem 5rem;
+  }
+  body {
+    margin-left: 4%;
   }
 }
 @media screen and (min-width: 415px) and (max-width: 780px) {
@@ -179,6 +203,27 @@ img {
     margin-left: -2%;
   }
   img {
-    width: 10rem;
+    width: 5rem;
+  }
+  #deal-button {
+    height: 6rem;
+    width: 6rem;
+    margin-left: 0;
+    margin-right: 1.5rem;
+    background-size: 6rem 6rem;
+  }
+  #hit-button {
+    height: 6rem;
+    width: 6rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    background-size: 6rem 6rem;
+  }
+  #stand-button {
+    height: 6rem;
+    width: 6rem;
+    margin-left: 1.5rem;
+    margin-right: 0;
+    background-size: 6rem 6rem;
   }
 }
