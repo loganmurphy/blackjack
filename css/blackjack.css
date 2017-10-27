@@ -2,7 +2,7 @@ html, body {
   width: 100%;
   height: 100%;
   margin-top: -2%;
-  background-color: lightgreen;
+  background-color: #0ba60c;
 }
 
 header, footer {
@@ -59,7 +59,7 @@ header, footer {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 1em;
-  background-color: lime;
+  background-color: #0dc10d;
 }
 
 .buttons {

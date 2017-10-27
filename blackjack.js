@@ -1,3 +1,62 @@
+/*
+This is for refactoring
+// For Deck
+class Deck {
+  constructor(deck, used_cards) {
+    this.deck = [{point: 6, suit: "clubs"}, {point: 1, suit: "spades"}, {point: 5, suit: "diamonds"}, {point: 10, suit: "hearts"}];
+    this.used_cards = [];
+  }
+  draw() {
+    console.log(this.deck[0]);
+    this.used_cards.push(this.deck[0]);
+    console.log(this.used_cards);
+
+    this.deck.shift();
+  }
+  cards_left() {
+    console.log(this.deck.length);
+  }
+  shuffle(deck) {
+    for (var i = this.deck.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = this.deck[i];
+        this.deck[i] = this.deck[j];
+        this.deck[j] = temp;
+    }
+    return this.deck;
+  }
+}
+// For Hand
+class Hand{
+  constructor(cards){
+    this.cards = []
+  }
+  addCard(cards){
+    this.cards.push(cards);
+    return this.cards;
+  }
+  getPoints(cards, point_tally){
+    point_tally = Number('');
+    this.cards.forEach(function(card){
+      point_tally += Number(card['points'])
+      console.log(point_tally);
+    })
+  }
+}
+// For Cards
+class Card {
+  constructor(point, suit, url){
+  this.point = point;
+  this.suit = suit;
+  this.url = url;
+  }
+  get_image_url(){
+    this.url = 'blackjack/cards/' + this.point + '_of_' + this.suit + '.png';
+    console.log(this.url);
+    return this.url;
+  }
+}
+*/
 
 var deck = [
   { point: 10, suit: 'hearts', img: '<img src="cards/queen_of_hearts.png">'},
@@ -95,14 +154,12 @@ function dealer_hit(){
   double_ace_checker();
   var player_points = Number($('#player_points').text());
   var dealer_points = Number($('#dealer_points').text());
-  // var old_dealer_wins_value = Number($('#dealer_wins').text());
   var old_player_wins_value = Number($('#player_wins').text());
     while (true){
       if (Number($('#dealer-points').text() < 17)){
       var dealer_card = deck[Math.floor(Math.random()*deck.length)];
       var index_dealer = deck.indexOf(dealer_card);
       var dealer_old_value = Number($('#dealer-points').text());
-      // var old_dealer_wins_value = Number($('#dealer_wins').text());
       var old_player_wins_value = Number($('#player_wins').text());
       $('#dealer-hand').append(dealer_card['img']);
       Number($('#dealer-points').text(dealer_old_value + dealer_card['point']));
@@ -115,7 +172,6 @@ function dealer_hit(){
         $('#hit-button').attr('disabled', 'disabled');
         $('#stand-button').attr('disabled', 'disabled');
         (Number($('#player_wins').text(old_player_wins_value + 5)));
-        // old_player_wins_value = 0;
         return false;
       } else if (Number($('#dealer-points').text()) === Number($('#player-points').text())){
         $('#modal_push').show();
@@ -128,7 +184,6 @@ function dealer_hit(){
         $('#hit-button').attr('disabled', 'disabled');
         $('#stand-button').attr('disabled', 'disabled');
         (Number($('#player_wins').text(old_player_wins_value - 5)));
-        // old_player_wins_value = 0;
         return false;
       } else if (Number($('#dealer-points').text()) < Number($('#player-points').text())){
         $('#modal_player_win').show();
@@ -136,7 +191,6 @@ function dealer_hit(){
         $('#hit-button').attr('disabled', 'disabled');
         $('#stand-button').attr('disabled', 'disabled');
         (Number($('#player_wins').text(old_player_wins_value + 5)));
-        // old_player_wins_value = 0;
       } else {
         $('#modal3').hide();
         return false;
@@ -148,14 +202,12 @@ function dealer_hit(){
       $('#hit-button').attr('disabled', 'disabled');
       $('#stand-button').attr('disabled', 'disabled');
       Number($('#player_wins').text(old_player_wins_value - 5));
-      // old_player_wins_value = 0;
     } else if (Number($('#dealer-points').text()) < Number($('#player-points').text()) && Number($('#dealer-points').text()) > 16){
       $('modal_player_win').show()
       $.playSound('/sounds/applause.mp3');
       $('#hit-button').attr('disabled', 'disabled');
       $('#stand-button').attr('disabled', 'disabled');
       (Number($('#player_wins').text(old_player_wins_value + 5)));
-      // old_player_wins_value = 0;
     } else if (Number($('#dealer-points').text()) === Number($('#player-points').text()) && Number($('#dealer-points').text()) >= 17){
       $('#modal_push').show();
       $('#hit-button').attr('disabled', 'disabled');
@@ -176,16 +228,10 @@ $('#deal-button').click(function(){
   deck.splice(index_dealer, 1);
   i = 0;
     while (i < 2){
-    // var dealer_card = deck[Math.floor(Math.random()*deck.length)];
     var index_dealer = deck.indexOf(dealer_card);
-    // var dealer_old_value = Number($('#dealer-points').text());
     var player_card = deck[Math.floor(Math.random()*deck.length)];
     var index_player = deck.indexOf(player_card);
     var player_old_value = Number($('#player-points').text());
-    // $('#dealer-hand').append(dealer_card['img']);
-    // Number($('#dealer-points').text(dealer_old_value + dealer_card['point']));
-    // used_deck.push(dealer_card);
-    // deck.splice(index_dealer, 1);
     $('#player-hand').append(player_card['img']);
     Number($('#player-points').text(player_old_value + player_card['point']));
     used_deck.push(player_card);
@@ -200,13 +246,11 @@ $('#deal-button').click(function(){
 
 $('#hit-button').click(function(){
   var dealer_points = Number($('#dealer-points').text());
-  // dealer_point_checker();
   deck_checker();
   var player_card = deck[Math.floor(Math.random()*deck.length)];
   var index_player = deck.indexOf(player_card);
   var player_old_value = Number($('#player-points').text());
   var old_player_wins_value = Number($('#player_wins').text());
-  // var old_dealer_wins_value = Number($('#dealer_wins').text());
   Number($('#player-points').text(player_old_value + player_card['point']));
   $('#player-hand').append(player_card['img']);
   used_deck.push(player_card);
@@ -217,7 +261,6 @@ $('#hit-button').click(function(){
     $('#hit-button').attr('disabled', 'disabled');
     $('#stand-button').attr('disabled', 'disabled');
     Number($('#player_wins').text(old_player_wins_value - 5));
-    // old_player_wins_value = 0;
   }
   return Number($('#dealer-points').text());
 });
